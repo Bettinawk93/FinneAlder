@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finn alderen</title>
+</head>
+
+<body>
+    <style>
+        body {
+            background-color: grey;
+
+        }
+    </style>
+
+
+    <img src="./gammelmann.png">
+
+    <h1>Alderssjekk</h1>
+    <p>Når er du født:</p>
+    <input id="yearOfBirth" type="text">
+    <br>
+    <p>Navn:</p>
+    <input id="name" type="text"><br />
+    <input id="yearChk" type="checkbox">Har du hatt bursdag i år?<br />
+    <button onclick="generate();">Trykk her for å se</button>
+
+    <div id="answer"></div>
+
+    <script>
+        function getAge(yearOfBirth, hadBirthday) {
+            let todaysDate = new Date();
+            let year = todaysDate.getFullYear();
+            let age = year - yearOfBirth;
+
+            if (hadBirthday == false){
+                age=age-1
+            }
+
+                return age;
+        }
+
+        function generate() {
+            let name = document.getElementById('name').value;
+            let hadBirthday = document.getElementById('yearChk').checked;
+            let yearOfBirth = parseInt(document.getElementById('yearOfBirth').value);
+            let age = getAge(yearOfBirth, hadBirthday);
+            document.getElementById('answer').innerHTML = `Hei ${name}! Du blir visst ${age} år i år`;
+        }
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
